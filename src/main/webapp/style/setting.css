@@ -1,0 +1,9 @@
+input[type=password],
+input[type=email],
+input[type=text]{
+    font-size: 1.25rem;
+}
+.form-label{
+    font-size: 1.25rem!important;
+
+}

@@ -1,0 +1,215 @@
+User:
+
+    Generated {
+
+        notifications for wish-listed items.
+        Message of approved reservations.
+        Overdue notices
+
+    }
+
+
+    Staff{
+
+        access to additional items.
+
+    }
+
+    Can {
+
+        view and reserve device.
+        set pick-up time.
+        unavailable to wish list. 
+        manage check-out and returns.
+        update password
+
+    }
+
+===========================================================================
+
+	
+Technician {
+
+    Can {
+
+            see notifications about the items.
+            manage check-in check-out procss.
+
+            request processing{
+                approval - delivery
+            }
+
+            equipment damged report
+            check device status.
+
+        }
+
+    admin {
+
+        dashboard for {
+            new damged reports
+            
+        }
+
+        device usage and trend(cross campus).
+        review and confrim damaged report.
+        create user account for all roles.
+
+    }
+}
+
+===========================================================================
+
+
+Courier :
+
+    notifications{
+        pack-up
+    }
+    report pick-up and delivery    
+
+===========================================================================
+
+
+functional requerment:
+
+    Inventory Check-out and Management
+    ●	Show a list of all equipment with filtering feature
+    ●	Add / edit / remove / un-list items
+    ●	Review and management personal booking (Client)
+    ●	Review and management booking request (Technician)
+    ●	Handle check-in / check-out of equipment
+
+    Delivery 
+    ●	Send equipment for delivery
+    ●	Receive equipment from delivery
+    ●	View list of pick-up request and delivery status of active records (It can be integrated with list of item for  technician portal)
+    ●	Pick-up and delivery of equipment
+
+    Analytic / Report
+
+    ●	Show a list of booking records with filtering feature
+    ●	Show the booking rate of selected venue (calculated by month/year)
+    ●	Show the booking rate of selected equipment (by individual device/model,  by month/year)
+
+    Account Management
+
+    ●	Show a list of existing users
+    ●	Create and delete users
+    ●	Edit users with detail and roles
+    ●	Manage the user role
+    ●	Change password and update personal information
+
+===========================================================================
+
+MUST !!!!
+
+    Skills requirements
+
+        a) Use JSP/servlets to dynamically generate HTML pages
+        b) Use JSP/servlets to accept user inputs from browser
+        i) Apply the MVC model
+        f) Use JDBC for database connection
+        c) Use JSP Action
+        d) Use Custom Tag (Taglib).
+        e) Use JavaBean
+        g) Use session checking
+        h) Use login control
+        k) Other skills applied
+
+===========================================================================
+
+
+
+
+document:
+
+    a)	Assumption and the user and system requirements
+    b)	Site map
+    c)	System structure on how MVC Model is applied
+    d)	Database structure
+    e)	Brief description (1 or 2 pages only) on the major characteristics and design of your application
+    f)	Project Schedule
+    g)	Conclusions
+    h)	Skill checklist which lists your used skills (or technologies) in a single page and highlights the skills and technologies applied in your project
+    
+
+DB Design:
+    
+    user{
+        user_id,
+        username, #optional
+        password,
+        role
+        campus_id
+    }
+
+    wishlist{
+        item_id,
+        user_id
+    }
+
+    item{
+        item_id,
+        itemname,
+        itemtype,
+        type
+    }
+
+    capmus_item{
+        campus_id,
+        item_id,
+        quantity
+        avaliable # optional handle by qty 
+    }
+
+    brorrow_list{
+        brorrow_id
+        user_id,
+        campus_id,
+        status
+    }
+
+    check_out_waiting_list{
+        brorrow_id, ->brorrow_list
+    }
+
+    delivery{
+        
+    }
+
+    brorrow_log{
+        brorrow_id, ->brorrow_list
+        status, :check -out return
+        date 
+    }
+
+    return list
+
+    damage_log{
+
+        brorrow_id, ->brorrow_list
+        damage_report,
+
+    }
+
+
+    brorrow_detail{
+
+        brorrow_id 
+        item_id,
+        qty,
+
+    }
+    
+
+
+    noti{
+
+        noti_id,
+        user_id
+        noti_mes
+        notitype || wish , deliver
+
+    }
+
